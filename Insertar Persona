@@ -1,0 +1,26 @@
+
+void ArbolGenealogico::insertar(int id, string nombre, string fecha, int padre_id, int madre_id) {
+    Persona* nueva = new Persona(id, nombre, fecha);
+
+    if (!raiz) {
+        raiz = nueva;
+    } else {
+        raiz = insertarABB(raiz, nueva);
+    }
+
+    if (padre_id != -1) {
+        Persona* padre = buscar(raiz, padre_id);
+        if (padre) {
+            nueva->padre = padre;
+            agregarHijo(padre, nueva);
+        }
+    }
+
+    if (madre_id != -1) {
+        Persona* madre = buscar(raiz, madre_id);
+        if (madre) {
+            nueva->madre = madre;
+            agregarHijo(madre, nueva);
+        }
+    }
+}
