@@ -1,0 +1,31 @@
+
+void ArbolGenealogico::mostrarFamilia(int id) {
+    Persona* persona = buscar(raiz, id);
+    if (!persona) {
+        cout << "Persona no encontrada.\n";
+        return;
+    }
+
+    cout << "\nFamilia de " << persona->nombre << ":\n";
+    
+    if (persona->padre || persona->madre) {
+        cout << "Padres: ";
+        if (persona->padre) cout << persona->padre->nombre;
+        if (persona->madre) {
+            if (persona->padre) cout << " y ";
+            cout << persona->madre->nombre;
+        }
+        cout << endl;
+    }
+
+    if (persona->hijos) {
+        cout << "Hijos: ";
+        Persona* hijo = persona->hijos;
+        while (hijo) {
+            cout << hijo->nombre;
+            hijo = hijo->hermanos;
+            if (hijo) cout << ", ";
+        }
+        cout << endl;
+    }
+}
