@@ -1,0 +1,13 @@
+void ArbolGenealogico::mostrarPreorden() {
+    cout << "Recorrido Preorden:\n";
+    mostrarPreorden(raiz);
+    cout << endl;
+}
+
+void ArbolGenealogico::mostrarPreorden(Persona* nodo) {
+    if (nodo) {
+        cout << nodo->nombre << " (ID: " << nodo->id << ", Nac: " << nodo->fecha_nacimiento << ")\n";
+        mostrarPreorden(nodo->padre);
+        mostrarPreorden(nodo->madre);
+    }
+}
