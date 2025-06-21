@@ -1,0 +1,7 @@
+// Búsqueda por ID
+Persona* ArbolGenealogico::buscar(Persona* nodo, int id) {
+    if (!nodo) return nullptr;
+    if (id == nodo->id) return nodo;
+    if (id < nodo->id) return buscar(nodo->padre, id);
+    return buscar(nodo->madre, id);
+}
