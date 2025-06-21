@@ -1,0 +1,14 @@
+// Constructor
+ArbolGenealogico::ArbolGenealogico() : raiz(nullptr) {}
+
+// Inserción en ABB
+Persona* ArbolGenealogico::insertarABB(Persona* nodo, Persona* nuevo) {
+    if (!nodo) return nuevo;
+    
+    if (nuevo->id < nodo->id)
+        nodo->padre = insertarABB(nodo->padre, nuevo);
+    else
+        nodo->madre = insertarABB(nodo->madre, nuevo);
+    
+    return nodo;
+}
