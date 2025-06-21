@@ -1,0 +1,4 @@
+// Agregar relación padre/madre-hijo
+void ArbolGenealogico::agregarHijo(Persona* padre, Persona* hijo) {
+    hijo->hermanos = padre->hijos;
+    padre->hijos = hijo
